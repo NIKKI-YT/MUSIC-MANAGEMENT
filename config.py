@@ -14,13 +14,13 @@ API_HASH = getenv("API_HASH","d6186691704bd901bdab275ceaab88f3")
 # ------------------------------------------------------
 BOT_TOKEN = getenv("BOT_TOKEN","7981435750:AAFAjrDiWDfEDKwJ3WIsOhpbZThiV1JY7h0")
 # -------------------------------------------------------
-OWNER_USERNAME = getenv("OWNER_USERNAME","Og_Tenny")
+OWNER_USERNAME = getenv("OWNER_USERNAME","Og_Zerathos")
 # --------------------------------------------------------
 BOT_USERNAME = getenv("BOT_USERNAME" , "CardioMuzicBot")
 # --------------------------------------------------------
 BOT_NAME = getenv("BOT_NAME" , "-  `𝐂α᱂ᴅɪᴏ ꭗ‌ 𝐌ᴜѕɪᴄ")
 # ---------------------------------------------------------
-ASSUSERNAME = getenv("ASSUSERNAME" , "sexyKakrox")
+ASSUSERNAME = getenv("ASSUSERNAME" , "ichooseher")
 # ---------------------------------------------------------
 
 
@@ -67,8 +67,8 @@ GIT_TOKEN = getenv(
 
 # ------------------------------------------------------------------------
 # -------------------------------------------------------------------------
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/eternal_bot_updates")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/et_bot_updates")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/botXjarvis")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/JarvisXsupport")
 # ------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------
 
@@ -82,7 +82,7 @@ SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/et_bot_updates")
 # --------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------
-AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "True")
+AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "False")
 AUTO_LEAVE_ASSISTANT_TIME = int(getenv("ASSISTANT_LEAVE_TIME", "9000"))
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION", "9999999"))
 SONG_DOWNLOAD_DURATION_LIMIT = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "9999999"))
