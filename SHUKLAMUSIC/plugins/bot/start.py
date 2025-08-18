@@ -29,7 +29,7 @@ from config import BANNED_USERS
 
 SHASHANK_VD = [
    
-    "https://files.catbox.moe/40t36l.jpg",
+   "https://files.catbox.moe/40t36l.jpg",
    "https://files.catbox.moe/y4q8we.jpg",
    "https://files.catbox.moe/3hvb0e.jpg",
    "https://files.catbox.moe/ik2y3y.jpg",
