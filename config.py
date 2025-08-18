@@ -26,7 +26,7 @@ ASSUSERNAME = getenv("ASSUSERNAME" , "sexyKakrox")
 
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://cardiomusic4:cardiomusic4@cluster0.4n3ee1d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://anshganava4444:anshganava4444@cluster0.4eott.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 
@@ -53,7 +53,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY","HRKU-AApD2ZG7a151gNkH6-WUTcHUYjUnxQRhG
 # ----------------------------------------------------------------
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/Ahad611/MUSIC-MANAGEMENT",
+    "https://github.com/Ahad6626/MUSIC-MANAGEMENT",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
@@ -67,8 +67,8 @@ GIT_TOKEN = getenv(
 
 # ------------------------------------------------------------------------
 # -------------------------------------------------------------------------
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Addiction_World")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/CardioXsupport")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/eternal_bot_updates")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/et_bot_updates")
 # ------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------
 
