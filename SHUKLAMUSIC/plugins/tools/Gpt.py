@@ -1,10 +1,12 @@
+import os
 import requests
 from SHUKLAMUSIC import app
 from pyrogram.types import Message
 from pyrogram.enums import ChatAction, ParseMode
 from pyrogram import filters
 
-API_KEY = "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"
+# Load API key from environment variable (DON'T hardcode keys!)
+API_KEY = os.getenv("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")
 
 BASE_URL = "https://api.together.xyz/v1/chat/completions"
 
@@ -14,67 +16,65 @@ BASE_URL = "https://api.together.xyz/v1/chat/completions"
         prefixes=["+", ".", "/", "-", "", "$", "#", "&"],
     )
 )
-async def chat_gpt(bot, message):
+async def chat_gpt(bot, message: Message):
     try:
-        # Typing action when the bot is processing the message
+        # Check if API key is missing
+        if not API_KEY:
+            await message.reply_text("❍ ᴇʀʀᴏʀ: API key not found. Please set TOGETHER_API_KEY in environment.")
+            return
+
         await bot.send_chat_action(message.chat.id, ChatAction.TYPING)
 
         if len(message.command) < 2:
-            # If no question is asked, send an example message
             await message.reply_text(
                 "❍ ᴇxᴀᴍᴘʟᴇ:**\n\n/chatgpt ᴡʜᴏ ɪs - '𝐙 𝛆 ʀ 𝛂 ƚ 𝐡 𝚘 δ?"
             )
+            return
+
+        # Extract query
+        query = message.text.split(' ', 1)[1]
+
+        headers = {
+            "Authorization": f"Bearer {API_KEY}",
+            "Content-Type": "application/json"
+        }
+
+        payload = {
+            "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+            "messages": [
+                {"role": "user", "content": query}
+            ]
+        }
+
+        response = requests.post(BASE_URL, json=payload, headers=headers)
+
+        if response.status_code != 200:
+            await message.reply_text(
+                f"❍ ᴇʀʀᴏʀ: API request failed. Status code: {response.status_code}\n\n{response.text}"
+            )
+            return
+
+        try:
+            response_data = response.json()
+        except ValueError:
+            await message.reply_text("❍ ᴇʀʀᴏʀ: Invalid response format (not JSON).")
+            return
+
+        # Safely extract assistant reply
+        result = None
+        if "choices" in response_data and len(response_data["choices"]) > 0:
+            if "message" in response_data["choices"][0]:
+                result = response_data["choices"][0]["message"].get("content")
+            elif "text" in response_data["choices"][0]:
+                result = response_data["choices"][0]["text"]
+
+        if result:
+            await message.reply_text(
+                f"{result.strip()} \n\nＡɴsᴡᴇʀᴇᴅ ʙʏ➛[-'𝐙 𝛆 ʀ 𝛂 ƚ 𝐡 𝚘 δ](https://t.me/CardioMuzicBot?start=_tgr_TzS1uiNkYWE9)",
+                parse_mode=ParseMode.MARKDOWN
+            )
         else:
-            # Extract the query from the user's message
-            query = message.text.split(' ', 1)[1]
-            print("Input query:", query)  # Debug input
+            await message.reply_text("❍ ᴇʀʀᴏʀ: No valid response from API.")
 
-            # Set up headers with Authorization and Content-Type
-            headers = {
-                "Authorization": f"Bearer {API_KEY}",
-                "Content-Type": "application/json"
-            }
-
-            # Prepare the payload with the correct model and user message
-            payload = {
-                "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",  # Change model if needed
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": query  # User's question from the message
-                    }
-                ]
-            }
-
-            # Send the POST request to the API
-            response = requests.post(BASE_URL, json=payload, headers=headers)
-
-            # Debugging: print raw response
-            print("API Response Text:", response.text)  # Print raw response
-            print("Status Code:", response.status_code)  # Check the status code
-
-            # If the response is empty or not successful, handle the error
-            if response.status_code != 200:
-                await message.reply_text(f"❍ ᴇʀʀᴏʀ: API request failed. Status code: {response.status_code}")
-            elif not response.text.strip():
-                await message.reply_text("❍ ᴇʀʀᴏʀ: API se koi valid data nahi mil raha hai. Response was empty.")
-            else:
-                # Attempt to parse the JSON response
-                try:
-                    response_data = response.json()
-                    print("API Response JSON:", response_data)  # Debug response JSON
-
-                    # Get the assistant's response from the JSON data
-                    if "choices" in response_data and len(response_data["choices"]) > 0:
-                        result = response_data["choices"][0]["message"]["content"]
-                        await message.reply_text(
-                            f"{result} \n\nＡɴsᴡᴇʀᴇᴅ ʙʏ➛[-'𝐙 𝛆 ʀ 𝛂 ƚ 𝐡 𝚘 δ](https://t.me/CardioMuzicBot?start=_tgr_TzS1uiNkYWE9)",
-                            parse_mode=ParseMode.MARKDOWN
-                        )
-                    else:
-                        await message.reply_text("❍ ᴇʀʀᴏʀ: No response from API.")
-                except ValueError:
-                    await message.reply_text("❍ ᴇʀʀᴏʀ: Invalid response format.")
     except Exception as e:
-        # Catch any other exceptions and send an error message
-        await message.reply_text(f"**❍ ᴇʀʀᴏʀ: {e} ")
+        await message.reply_text(f"**❍ ᴇʀʀᴏʀ: {e} **")
