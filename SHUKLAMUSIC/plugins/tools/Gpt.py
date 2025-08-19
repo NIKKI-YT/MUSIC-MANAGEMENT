@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from pyrogram.enums import ChatAction, ParseMode
 from pyrogram import filters
 
-API_KEY = "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"
+API_KEY = "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"
 
 BASE_URL = "https://api.together.xyz/v1/chat/completions"
 
@@ -68,7 +68,7 @@ async def chat_gpt(bot, message):
                     if "choices" in response_data and len(response_data["choices"]) > 0:
                         result = response_data["choices"][0]["message"]["content"]
                         await message.reply_text(
-                            f"{result} \n\nＡɴsᴡᴇʀᴇᴅ ʙʏ➛[˹ - 𝐓ꫀꋊиყѕꄲꋊ𓂃𝂜爱˼](https://t.me/CardioMuzicBot?start=_tgr_TzS1uiNkYWE9)",
+                            f"{result} \n\nＡɴsᴡᴇʀᴇᴅ ʙʏ➛[-'𝐙 𝛆 ʀ 𝛂 ƚ 𝐡 𝚘 δ](https://t.me/CardioMuzicBot?start=_tgr_TzS1uiNkYWE9)",
                             parse_mode=ParseMode.MARKDOWN
                         )
                     else:
