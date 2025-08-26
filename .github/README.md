@@ -1,6 +1,6 @@
 <h2 align="center">
  
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+IVANxMUSIC+V2)](https://github.com/IR-O/IVANxMUSIC)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+IVANxMUSIC+V2)](https://github.com/NIKKI-YT/MUSIC-MANAGEMENT)
 </h2>
 
 <h2 align="center">
